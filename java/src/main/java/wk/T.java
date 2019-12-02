@@ -4,6 +4,7 @@ import java.io.InputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.pdf.PDFParser;
+import org.apache.tika.parser.pdf.PDFParserConfig;
 import org.apache.tika.sax.BodyContentHandler;
 import org.xml.sax.ContentHandler;
 
@@ -13,31 +14,40 @@ public class T {
 
     public static String extractTikaText(String file) throws Exception {
         InputStream is = null;
-        ContentHandler contenthandler = null;
+        ContentHandler contentHandler = null;
         try {
             is = new FileInputStream(file);
-            contenthandler = new BodyContentHandler(-1);
+            contentHandler = new BodyContentHandler(-1);
+
             Metadata metadata = new Metadata();
-            PDFParser pdfparser = new PDFParser();
-            pdfparser.parse(is, contenthandler, metadata, new ParseContext());
-            // logger.info("PDF text extracted from " + file + "\n");
+
+            PDFParserConfig config = new PDFParserConfig();
+            // config.setSortByPosition(true);
+            // config.setEnableAutoSpace(true);
+
+            PDFParser pdfParser = new PDFParser();
+            pdfParser.setPDFParserConfig(config);
+
+            ParseContext context = new ParseContext();
+
+            pdfParser.parse(is, contentHandler, metadata, context);
 
         } catch (Exception e) {
-            // logger.info("Error in parsing with Apache Tika parser\n");
+            System.out.println(e.getMessage());
+
         } finally {
             if (is != null)
                 try {
                     is.close();
                 } catch (IOException e) {
-                    // logger.info("Error in closing file with Apache Tika\n");
+                    System.out.println(e.getMessage());
                 }
         }
-        return contenthandler.toString();
-
+        return contentHandler.toString();
     }
 
     public static void main(String[] args) throws Exception {
-        String text = extractTikaText("Pdf.pdf");
+        String text = extractTikaText("resource/Pdf.pdf");
         System.out.println(text);
     }
 }

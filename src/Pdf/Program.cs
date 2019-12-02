@@ -15,7 +15,7 @@ namespace Pdf {
             return output.ToString();
         }
         static void Main(string[] args) {
-            var text = GetTextFromAllPages("Pdf.pdf");
+            var text = GetTextFromAllPages("resource/Pdf.pdf");
             Console.WriteLine(text);
         }
     }

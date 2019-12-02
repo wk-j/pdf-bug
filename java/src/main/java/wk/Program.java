@@ -10,7 +10,7 @@ import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 public class Program {
 
     public static void main(String[] args) throws Exception {
-        FileInputStream inputstream = new FileInputStream(new File("Pdf.pdf"));
+        FileInputStream inputstream = new FileInputStream(new File("resource/Pdf.pdf"));
         PdfReader reader = new PdfReader(inputstream);
         String line = PdfTextExtractor.getTextFromPage(reader, 1, new SimpleTextExtractionStrategy());
         // String line = PdfTextExtractor.getTextFromPage(reader, 1);
