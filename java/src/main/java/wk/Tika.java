@@ -10,7 +10,7 @@ import org.xml.sax.ContentHandler;
 
 import java.io.*;
 
-public class T {
+public class Tika {
 
     public static String extractTikaText(String file) throws Exception {
         InputStream is = null;

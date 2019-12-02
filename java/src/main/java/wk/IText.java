@@ -7,7 +7,7 @@ import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.PdfTextExtractor;
 import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 
-public class Program {
+public class IText {
 
     public static void main(String[] args) throws Exception {
         FileInputStream inputstream = new FileInputStream(new File("resource/Pdf.pdf"));

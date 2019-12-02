@@ -4,14 +4,15 @@
 
 ```bash
 mvn -f java/pom.xml install
-mvn -f java/pom.xml exec:java -D"exec.mainClass"="wk.T"
+mvn -f java/pom.xml exec:java -D"exec.mainClass"="wk.Tika"
+mvn -f java/pom.xml exec:java -D"exec.mainClass"="wk.Box"
 ```
 
 *Ok*
 
 ```bash
 dotnet run --project src/Pdf/Pdf.csproj
-mvn -f java/pom.xml exec:java -D"exec.mainClass"="wk.Program"
+mvn -f java/pom.xml exec:java -D"exec.mainClass"="wk.IText"
 ```
 
 ## Resource
